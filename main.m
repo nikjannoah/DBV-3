@@ -17,7 +17,7 @@ end
 L = watershed(images{1})
 STATS = regionprops(L, 'Area')
 
-
+[A,n] = findPartikel(inputPic)
 
 disp('SUCCESS')
 figure('name','RESULT');
