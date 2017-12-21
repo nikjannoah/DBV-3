@@ -14,10 +14,26 @@ for k = 1 : NF
  
 end
 
-L = watershed(images{1})
-STATS = regionprops(L, 'Area')
+I=images{1}
+I=rgb2gray(I);
+level = graythresh(I); %get the perfect threshold from this Image ;)
+BW = im2bw(I,level);
 
-[A,n] = findPartikel(inputPic)
+
+[labels,num] = bwlabel(BW) %Find connected areas and label them with numbers
+disp(num)
+RGB = label2rgb(labels)
+figure('name','labels')    
+imshow(RGB)
+
+se=strel('disk',10);  
+BW=imerode(~BW,se);
+figure('name','blackwhite2');
+imshow(~BW)
+
+%L = watershed(images{1})
+%STATS = regionprops(L, 'Area')
+%[A,n] = findPartikel(inputPic)
 
 disp('SUCCESS')
 figure('name','RESULT');
