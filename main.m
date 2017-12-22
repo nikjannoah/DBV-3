@@ -2,7 +2,7 @@ clear all
 clc
 disp('START main ---- ---- ---- ----')
 
-% READ IMAGE DATA
+%  READ IMAGE DATA
 file = dir('Sequenz/*.jpg');
 NF = length(file);
 images = cell(NF,1);
